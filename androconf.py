@@ -354,8 +354,9 @@ def color_range(startcolor, goalcolor, steps):
 
 def load_api_specific_resource_module(resource_name, api):
     # Those two imports are quite slow.
-    from androguard.core.api_specific_resources.aosp_permissions.aosp_permissions import AOSP_PERMISSIONS
-    from androguard.core.api_specific_resources.api_permission_mappings.api_permission_mappings import AOSP_PERMISSIONS_MAPPINGS
+    '''
+    from aosp_permissions import AOSP_PERMISSIONS
+    from api_permission_mappings import AOSP_PERMISSIONS_MAPPINGS
 
     if resource_name == "aosp_permissions":
         module = AOSP_PERMISSIONS
@@ -370,3 +371,5 @@ def load_api_specific_resource_module(resource_name, api):
     if value:
         return value
     return module.get('9')
+    '''
+    pass

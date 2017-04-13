@@ -7,12 +7,12 @@ from builtins import chr
 from builtins import str
 from builtins import range
 from builtins import object
-from androguard.core import bytecode
-from androguard.core import androconf
-from androguard.core.bytecodes.dvm_permissions import DVM_PERMISSIONS
-from androguard.util import read
+import bytecode
+import androconf
+from dvm_permissions import DVM_PERMISSIONS
+from util import read, get_md5
 
-from androguard.core.resources import public
+import public
 
 import io
 from struct import pack, unpack
@@ -172,6 +172,9 @@ class APK(object):
         self.declared_permissions = {}
         self.valid_apk = False
 
+        self.file_md5 = ""
+        self.file_size = ""
+
         self.files = {}
         self.files_crc32 = {}
 
@@ -183,6 +186,8 @@ class APK(object):
             self.__raw = bytearray(read(filename))
 
         self.zipmodule = zipmodule
+        self.file_size = len(self.__raw)
+        self.file_md5 = get_md5(self.__raw)
 
         if zipmodule == 0:
             self.zip = ChilkatZip(self.__raw)
