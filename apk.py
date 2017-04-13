@@ -1003,6 +1003,25 @@ class APK(object):
         for c in self.get_signature_names():
             show_Certificate(self.get_certificate(c))
 
+    def get_cert_fingerprint(self, h=hashes.MD5):
+        cert_fp = []
+        for c in self.get_signature_names():
+            cert = self.get_certificate(c)
+            cert_fp.append(binascii.hexlify(cert.fingerprint(h())).decode("ascii"))
+        return cert_fp
+
+    def get_cert_md5(self):
+        return self.get_cert_fingerprint(hashes.MD5)
+
+    def get_cert_sha1(self):
+        return self.get_cert_fingerprint(hashes.SHA1)
+
+    def get_cert_sha256(self):
+        return self.get_cert_fingerprint(hashes.SHA256)
+
+    def get_cert_sha512(self):
+        return self.get_cert_fingerprint(hashes.SHA512)
+
 
 def get_Name(name, short=False):
     """
