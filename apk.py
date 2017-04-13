@@ -192,7 +192,7 @@ class APK(object):
         if zipmodule == 0:
             self.zip = ChilkatZip(self.__raw)
         elif zipmodule == 2:
-            from androguard.patch import zipfile
+            from patch import zipfile
             self.zip = zipfile.ZipFile(io.BytesIO(self.__raw), mode=mode)
         else:
             import zipfile
@@ -862,7 +862,7 @@ class APK(object):
             :type new_files: a dictionnary (key:filename, value:content of the file)
         """
         if self.zipmodule == 2:
-            from androguard.patch import zipfile
+            from patch import zipfile
             zout = zipfile.ZipFile(filename, 'w')
         else:
             import zipfile
