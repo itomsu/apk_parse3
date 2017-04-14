@@ -16,6 +16,8 @@ def test():
     print('cert sha512', apkf.get_cert_sha512())
     print('android version', apkf.androidversion)
     print('package', apkf.package)
+    print('app name', apkf.get_app_name())
+    print('app name', apkf.get_app_name('zh'))
     print('is valid', apkf.is_valid_APK())
     print('package', apkf.get_package())
     print('version code', apkf.get_androidversion_code())
@@ -29,7 +31,7 @@ def test():
     print('-----------------------')
     #apkf.show()
 
-    open('./'+apkf.package+'.icon', 'wb').write(apkf.get_file(apkf.get_app_icon()))
+    open('/tmp/'+apkf.package+'.icon', 'wb').write(apkf.get_file(apkf.get_app_icon()))
 
 if __name__ == "__main__":
     test()

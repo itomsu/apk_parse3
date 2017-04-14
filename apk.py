@@ -292,7 +292,7 @@ class APK(object):
         """
         return self.filename
 
-    def get_app_name(self):
+    def get_app_name(self, locale='\x00\x00'):
         """
             Return the appname of the APK
 
@@ -311,7 +311,7 @@ class APK(object):
             try:
                 app_name = res_parser.get_resolved_res_configs(
                     res_id,
-                    ARSCResTableConfig.default_config())[0][1]
+                    ARSCResTableConfig(buff=None, locale=locale))[0][1]
             except Exception as e:
                 androconf.warning("Exception selecting app name: %s" % e)
                 app_name = ""
@@ -2325,7 +2325,7 @@ class ARSCResTableConfig(object):
                 ((kwargs.pop('mnc', 0) & 0xffff) << 16)
 
             self.locale = 0
-            for char_ix, char in kwargs.pop('locale', "")[0:4]:
+            for char_ix, char in enumerate(kwargs.pop('locale', "")[0:4]):
                 self.locale += (ord(char) << (char_ix * 8))
 
             self.screenType = \

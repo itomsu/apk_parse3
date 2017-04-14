@@ -13,6 +13,18 @@ APK parse3
     apkf = APK(read("myfile.apk"), raw=True)
 ```
 
+### app_name
+
+Return the name of app or main activity
+
+
+```
+
+    >>> apkf.get_app_name()
+    >>> apkf.get_app_name('zh')
+
+```
+
 ### package
 
 Return the name of the package
