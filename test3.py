@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from apk import APK
+import os, sys
+
+sys.path.append(os.path.abspath(os.path.join('..')))
+
+from apk_parse3.apk import APK
 
 
 def test():

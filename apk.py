@@ -7,12 +7,12 @@ from builtins import chr
 from builtins import str
 from builtins import range
 from builtins import object
-import bytecode
-import androconf
-from dvm_permissions import DVM_PERMISSIONS
-from util import read, get_md5
+from . import bytecode
+from . import androconf
+from .dvm_permissions import DVM_PERMISSIONS
+from .util import read, get_md5
 
-import public
+from .import public
 
 import io
 from struct import pack, unpack
