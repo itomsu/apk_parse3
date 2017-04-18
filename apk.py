@@ -189,14 +189,17 @@ class APK(object):
         self.file_size = len(self.__raw)
         self.file_md5 = get_md5(self.__raw)
 
-        if zipmodule == 0:
-            self.zip = ChilkatZip(self.__raw)
-        elif zipmodule == 2:
-            from patch import zipfile
-            self.zip = zipfile.ZipFile(io.BytesIO(self.__raw), mode=mode)
-        else:
-            import zipfile
-            self.zip = zipfile.ZipFile(io.BytesIO(self.__raw), mode=mode)
+        try:
+            if zipmodule == 0:
+                self.zip = ChilkatZip(self.__raw)
+            elif zipmodule == 2:
+                from patch import zipfile
+                self.zip = zipfile.ZipFile(io.BytesIO(self.__raw), mode=mode)
+            else:
+                import zipfile
+                self.zip = zipfile.ZipFile(io.BytesIO(self.__raw), mode=mode)
+        except Exception:
+            raise
 
         if not skip_analysis:
             for i in self.zip.namelist():
