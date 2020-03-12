@@ -19,8 +19,8 @@ setuptools.setup(
     ],
     python_requires='>=3.5',
     install_requires = [
-        'future==0.16.0',
-        'pyasn1==0.2.3',
-        'cryptography==1.8.1'
+        'future',
+        'pyasn1',
+        'cryptography'
     ]
 )
