@@ -5,6 +5,14 @@ APK parse3
 -  reference `apk_parse <https://github.com/tdoly/apk_parse>`
 -  REAL python3 support
 
+## Troubleshooting
+
+The installation might fail because one of the dependency of this package is `cryptography` and it requires you to have `libssl-dev` installed. If you have this problem and you are using Ubuntu/Debian you can fix it using the following command:
+
+```
+sudo apt install libssl1.0-dev
+```
+
 ## Example:
 
 ```
